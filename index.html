@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <!-- Axios API -->
+    <link rel="stylesheet" href="./Assets/css/normalize.css" />
+    <!-- Icons -->
+    <link rel="stylesheet" href="./Assets/icons/css/all.min.css" />
+    <link rel="stylesheet" href="./Assets/css/style.css" />
+     <!-- Moment -->
+     <script src="/node_modules/moment/moment.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://rawgit.com/abdennour/hijri-date/master/cdn/hijri-date-latest.js" type="text/javascript" ></script>
+
+    <title>PRAYER TIMES</title>
+  </head>
+  <body>
+    <section id="header">
+      <div class="container">
+        <div class="top-nav">
+          <div class="sun-times">
+            <div class="sunrise">
+              <p>Sunrise At: <span id="sunrise-time">06:40</span></p>
+            </div>
+            <div class="sunset">
+              <p>Sunset At: <span id="sunset-time">07:05</span></p>
+            </div>
+          </div>
+          <div class="social">
+            <ul>
+              <li><i class="fa-brands fa-twitter"></i></li>
+              <li><i class="fa-brands fa-facebook-f"></i></li>
+              <li><i class="fa-brands fa-youtube"></i></li>
+              <li><i class="fa-brands fa-pinterest-p"></i></li>
+              <li><i class="fa-brands fa-instagram"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="logo">
+            <a href="#"
+              ><img src="./Assets/images/tarmiz_logo.png" alt="LOOG"
+            /></a>
+          </div>
+          <div class="links">
+            <ul>
+              <li><a href="#home" class="active">home</a></li>
+              <li><a href="#iqama-times">Iqama Times</a></li>
+              <li><a href="#prints">Prints</a></li>
+              <li><a href="#calendar">Calendar</a></li>
+            </ul>
+          </div>
+          <div class="download-btn">
+            <a href="#">Download App</a>
+          </div>
+          <div class="mobil-icone">
+            <i class="fa-solid fa-mosque"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="landing">
+      <div class="container">
+        <div class="landing-text">
+          <h1>
+            Stay Updated! <br />
+            Annual Iqama Times
+          </h1>
+          <p>
+            Stay on top of your spiritual routine with accurate prayer times
+          </p>
+        </div>
+        <div class="next-prayer">
+          <div class="time">
+            <p>
+              Next Prayer in: <br />
+              <span class="next"><!--1h : 58m : 32s --></span>
+            </p>
+            <span class="next-time"><!--ASR --></span>
+          </div>
+          <div class="prayer">
+            <p data-prayer-name="fajr">
+              Fajr <br />
+              <span id="next-time-fajr"><!--06:30 am --></span>
+            </p>
+            <p data-prayer-name="shurooq">
+              Shurooq <br />
+              <span id="next-time-shurooq"><!--07:30 am --></span>
+            </p>
+            <p data-prayer-name="dhuhr">
+              Dhuhr <br />
+              <span id="next-time-dhuhr"><!--01:00 pm --></span>
+            
+            </p>
+            <p class="" data-prayer-name="asr">
+              Asr <br />
+              <span id="next-time-asr"><!--05:00 pm --></span>
+            </p>
+            <p data-prayer-name="maghrib">
+              Maghrib <br />
+              <span id="next-time-maghrib"><!--06:45 pm --></span>
+            </p>
+            <p data-prayer-name="isha">
+              Isha <br />
+              <span id="next-time-isha"><!--08:15 pm --></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="body">
+      <div class="container">
+        <div class="search-bar">
+          <p class="city"></p>
+          <input id="city-input" type="text" placeholder="&#x1F4CD;Enter City" /> 
+          
+          <button id="requestBTN" class="disabled">Search</button>
+        </div>
+        <div class="date">
+          <p></p>
+        </div>
+        <div  onload="findeNextTime()" class="time-carts">
+          <div class="cart " data-prayer-name="fajr">
+            <p>Fajr <br /><span id="fajr-time"><!--06:14 am --></span></p>
+          </div>
+          <div class="cart " data-prayer-name="shurooq">
+            <p>Shurooq <br /><span id="shurooq-time"><!--07:30 am --></span></p>
+          </div>
+          <div class="cart " data-prayer-name="dhuhr">
+            <p>Dhuhr <br /><span id="dhuhr-time"><!--12:46 pm --></span></p>
+          </div>
+          <div class="cart" data-prayer-name="asr">
+            <p>Asr <br /><span id="asr-time"><!--03:27 pm --></span></p>
+          </div>
+          <div class="cart " data-prayer-name="maghrib">
+            <p>Maghrib <br /><span id="maghrib-time"><!--05:53 pm --></span></p>
+          </div>
+          <div class="cart" data-prayer-name="isha">
+            <p>Isha <br /><span id="isha-time"><!--07:12 pm --></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="footer">
+      <h2 class="heading-title">
+        Upcoming Islamic Events <br />
+        <span id="day-date">15,01,2023</span>
+      <h2>
+      <div class="slider">
+        <i class="fa-solid fa-caret-right"></i>
+        <div class="slider-tracker-container">
+          <ul class="slider-tracker">
+            <li class="slider-unit current">
+              <img src="./Assets/images/slider-1.jpg" alt="Haj" />
+              <div class="event">
+                <h2>Hajj 2023</h2>
+              </div>
+            </li>
+            <li class="slider-unit">
+              <img src="./Assets/images/slider-2.jpeg" alt="Haj" />
+              <div class="event">
+                <h2>Ramadan 2023</h2>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <i class="fa-solid fa-caret-left"></i>
+        <div class="slider-navs">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container">
+        <h2 class="heading-title">
+          Islamic Articles
+        <h2>
+        <div class="blog-carts">
+          <div class="cart">
+            <div class="img">
+              <a href="#"
+              ><img src="./Assets/images/blog-1.jpg" alt="blog photo"
+            /></a>
+            </div>
+            <p>Shab-e-Mairaj <br /><span aria-label="date">March 11</span></p>
+          </div>
+          <div class="cart">
+            <div class="img">
+              <a href="#"
+              ><img src="./Assets/images/blog-2.jpg" alt="blog photo"
+            /></a>
+            </div>
+            <p>Shab-e-Baraat <br /><span aria-label="date">March 28</span></p>
+          </div>
+          <div class="cart">
+            <div class="img">
+              <a href="#"
+              ><img src="./Assets/images/blog-3.jpg" alt="blog photo"
+            /></a>
+            </div>
+            <p>Ramadan <br /><span aria-label="date">April 13</span></p>
+          </div>
+          <div class="cart active">
+            <div class="img">
+              <a href="#"
+              ><img src="./Assets/images/blog-4.jpeg" alt="blog photo"
+            /></a>
+            </div>
+            <p>Laylat-ul-Qadr <br /><span aria-label="date">May 09</span></p>
+          </div>
+          <div class="cart">
+            <div class="img">
+              <a href="#"
+              ><img src="./Assets/images/blog-5.jpg" alt="blog photo"
+            /></a>
+            </div>
+            <p>Eid-ul-Fitr <br /><span aria-label="date">May 13</span></p>
+          </div>
+          <div class="cart">
+            <div class="img">
+              <a href="#"
+              ><img src="./Assets/images/blog-6.jpg" alt="blog photo"
+            /></a>
+            </div>
+            <p>Eid-ul-Adha <br /><span aria-label="date">July 20</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>All Copyrights Reserved By Muhammed Bezzare <i class="fa-solid fa-heart"></i></p>
+    </footer>
+    <script src="./main.js"></script>
+  </body>
+</html>
